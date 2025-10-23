@@ -6,7 +6,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const TanStackProvider = ({ children }: Props) => {
+const TanstackProvider = ({ children }: Props) => {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
@@ -14,4 +14,4 @@ const TanStackProvider = ({ children }: Props) => {
   );
 };
 
-export default TanStackProvider;
+export default TanstackProvider;
