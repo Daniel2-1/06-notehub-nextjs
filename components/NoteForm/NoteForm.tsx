@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useId } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNote } from "../../lib/api";
-import { newNoteType } from "../../types/note";
+import { NewNote } from "../../types/note";
 
 interface NoteFormProps {
   onClose: () => void;
@@ -38,7 +38,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
   const queryClient = useQueryClient();
 
   const { mutate: addNote, isPending } = useMutation({
-    mutationFn: (contentText: newNoteType) => createNote(contentText),
+    mutationFn: (contentText: NewNote) => createNote(contentText),
     onSuccess() {
       queryClient.invalidateQueries({
         queryKey: ["notes"],

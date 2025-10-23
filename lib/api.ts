@@ -1,8 +1,13 @@
-import { NotesResponse } from "./../types/note";
+
 import axios from "axios";
-import { newNoteType, Note } from ".././types/note";
+import { NewNote, Note } from ".././types/note";
 axios.defaults.baseURL = "https://notehub-public.goit.study/api";
 const TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
+
+export interface NotesResponse {
+  notes: Note[];
+  totalPages: number;
+}
 
 
 export const fetchNotes = async (
@@ -22,7 +27,7 @@ export const fetchNotes = async (
   return response.data;
 };
 
-export const createNote = async (newNote: newNoteType) => {
+export const createNote = async (newNote: NewNote) => {
   const response = await axios.post<Note>("/notes", newNote, {
     headers: {
       Authorization: `Bearer ${TOKEN}`,
